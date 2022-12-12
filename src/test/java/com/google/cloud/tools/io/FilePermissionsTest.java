@@ -114,7 +114,9 @@ public class FilePermissionsTest {
       Assert.fail("Can create directory in root");
     } catch (AccessDeniedException ex) {
       Assert.assertNotNull(ex.getMessage());
-      Assert.assertEquals("/ is not writable", ex.getMessage());
+      Assert.assertTrue(
+          "/ is not writable".equals(ex.getMessage())
+              || "\\ is not writable".equals(ex.getMessage()));
     }
   }
 }
